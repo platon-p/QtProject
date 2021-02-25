@@ -13,7 +13,10 @@ class Example(QWidget):
         self.initUI()
 
     def initUI(self):
-        uic.loadUi('ui.ui', self)
+        self.resize(300, 332)
+        self.btn = QPushButton(self)
+        self.btn.setGeometry(0, 300, 113, 32)
+        self.btn.setText('Нарисовать')
         self.do_paint = False
         self.btn.clicked.connect(self.paint)
 
@@ -29,7 +32,7 @@ class Example(QWidget):
         self.repaint()
 
     def draw_flag(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         rand = randint(0, 150)
         qp.drawEllipse(QRect(150 - rand, 150 - rand, 2 * rand, 2 * rand))
 
